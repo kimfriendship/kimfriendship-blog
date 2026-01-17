@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
-  const post = await getPost(id);
+  const { slug } = await params;
+  const post = await getPost(slug);
 
   if (!post) return notFound();
 

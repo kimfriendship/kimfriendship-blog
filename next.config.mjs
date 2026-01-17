@@ -3,7 +3,7 @@ import createMDX from "@next/mdx";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // 마크다운 및 MDX 파일을 포함하도록 `pageExtensions`를 구성합니다
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  pageExtensions: ["md", "mdx", "ts", "tsx"],
   // 선택적으로 다른 Next.js 구성 추가 가능
 };
 
