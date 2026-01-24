@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,11 +39,12 @@ export default function RootLayout({
       <body
         className={cn(
           `${inter.variable} ${notoKr.variable} ${mono.variable} antialiased`,
-          "mx-auto h-screen w-full max-w-[1200px] p-4",
+          "mx-auto flex h-screen w-full max-w-4xl flex-col p-4",
         )}
       >
-        {children}
-        <p className="mt-auto text-center">© 2026 kimfriendship</p>
+        <Header />
+        <main className="my-20 flex flex-col">{children}</main>
+        <Footer />
       </body>
     </html>
   );
