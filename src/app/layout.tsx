@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ThemeProvider } from "@/context/themeContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,16 +37,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
+      <head>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            (function() {
+              const stored = localStorage.getItem("theme");
+              const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+              const theme = stored || (systemDark ? "dark" : "light");
+              
+              if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+              }
+              })();
+              `}
+        </Script>
+      </head>
       <body
         className={cn(
           `${inter.variable} ${notoKr.variable} ${mono.variable} antialiased`,
           "mx-auto flex h-screen w-full max-w-4xl flex-col p-4",
         )}
       >
-        <Header />
-        <main className="my-20 flex flex-col">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <main className="my-20 flex flex-col">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
