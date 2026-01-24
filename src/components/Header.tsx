@@ -8,7 +8,10 @@ const navList = [
 export function Header() {
   return (
     <header className="bg-background/80 fixed top-0 left-0 w-full shadow-xs backdrop-blur-md">
-      <nav className="mx-auto flex w-full max-w-4xl justify-between p-4">
+      <nav
+        aria-label="Primary Navigation"
+        className="mx-auto flex w-full max-w-4xl justify-between p-4"
+      >
         <Link href="/" className="font-bold">
           kimfriendship
         </Link>
