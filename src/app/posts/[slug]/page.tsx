@@ -11,12 +11,16 @@ export default async function PostPage({
 
   if (!post) return notFound();
 
-  const { Content, meta } = post;
+  const { content, meta } = post;
 
   return (
-    <div>
-      <h2>{meta.title}</h2>
-      <Content />
-    </div>
+    <>
+      <div className="my-10 flex flex-col gap-8 border-b border-gray-300 pb-4">
+        <h1 className="text-4xl font-bold">{meta.title}</h1>
+        <time className="text-sm">{meta.date}</time>
+      </div>
+
+      {content}
+    </>
   );
 }

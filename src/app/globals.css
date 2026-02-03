@@ -56,7 +56,7 @@
    Dark Theme
 -------------------------------- */
 .dark {
-  --background: oklch(from #015a84 l c h);
+  --background: oklch(0.22 0.03 240);
   --foreground: oklch(0.98 0 0);
 
   --card: oklch(0.22 0.03 240);
