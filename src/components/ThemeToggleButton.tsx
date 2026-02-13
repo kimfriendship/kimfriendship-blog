@@ -14,7 +14,7 @@ export function ThemeToggleButton() {
   return (
     <button
       aria-label="Theme Toggle"
-      className="hover:bg-secondary/20 mx-4 cursor-pointer rounded-md p-2 transition-colors transition-transform duration-300"
+      className="hover:bg-secondary/20 cursor-pointer rounded-md p-2 transition-colors transition-transform duration-300"
       onClick={handleToggle}
     >
       {theme === "light" ? <SunIcon /> : <MoonIcon />}

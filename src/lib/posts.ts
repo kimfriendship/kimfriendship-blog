@@ -3,6 +3,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
+import { calculateReadingTime } from "./readingTime";
 
 // MDX 파일들이 있는 실제 폴더 경로
 const POSTS_PATH = path.join(process.cwd(), "src/content");
@@ -15,6 +16,8 @@ export async function getPost(slug: string) {
 
     const { content: mdxSource, data } = matter(fileSource);
 
+    const reading = calculateReadingTime(mdxSource);
+
     const { content } = await compileMDX({
       source: mdxSource,
       options: {
@@ -24,6 +27,7 @@ export async function getPost(slug: string) {
 
     return {
       content,
+      readingTime: reading.minutes,
       meta: data,
     };
   } catch (e) {

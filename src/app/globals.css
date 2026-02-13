@@ -161,4 +161,9 @@
   pre {
     @apply font-mono;
   }
+
+  h2,
+  h3 {
+    @apply scroll-mt-18;
+  }
 }

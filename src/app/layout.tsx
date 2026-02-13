@@ -58,7 +58,7 @@ export default function RootLayout({
       <body
         className={cn(
           `${inter.variable} ${notoKr.variable} ${mono.variable} antialiased`,
-          "mx-auto flex h-screen w-full max-w-4xl flex-col p-4",
+          "flex h-screen w-full flex-col",
         )}
       >
         <ThemeProvider>
