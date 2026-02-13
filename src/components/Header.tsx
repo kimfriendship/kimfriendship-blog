@@ -17,7 +17,7 @@ export function Header() {
           kimfriendship
         </Link>
 
-        <ul className="ml-auto flex items-center gap-4">
+        <ul className="mr-4 ml-auto flex items-center gap-4">
           {navList.map(({ href, label }) => (
             <li key={href}>
               <Link href={href} className="underline-offset-4 hover:underline">
