@@ -1,4 +1,3 @@
-import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { getPost } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
@@ -15,10 +14,8 @@ export default async function PostPage({
   const { content, readingTime, meta } = post;
 
   return (
-    <>
-      <ReadingProgressBar />
-
-      <div className="my-10 flex flex-col gap-8 border-b border-gray-300 pb-4">
+    <article>
+      <header className="my-10 flex flex-col gap-8 border-b border-gray-300 pb-4">
         <h1 className="text-4xl font-bold">{meta.title}</h1>
 
         <div className="flex items-center gap-2">
@@ -26,9 +23,9 @@ export default async function PostPage({
           <span className="text-sm">・</span>
           <span className="text-sm">{readingTime} min read</span>
         </div>
-      </div>
+      </header>
 
       {content}
-    </>
+    </article>
   );
 }
