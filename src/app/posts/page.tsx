@@ -4,7 +4,7 @@ export default async function PostsPage() {
   const posts = await getAllPosts();
 
   return (
-    <>
+    <div className="mx-auto w-full max-w-3xl px-4">
       <div className="flex items-end gap-4 py-10">
         <h1 className="text-4xl font-bold">포스트</h1>
         <span>({posts.length}개)</span>
@@ -24,6 +24,6 @@ export default async function PostsPage() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
