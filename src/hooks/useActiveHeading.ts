@@ -9,17 +9,23 @@ export function useActiveHeading(items: TocItem[]) {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        const visibleHeadings = entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => ({
+            id: entry.target.id,
+            top: entry.boundingClientRect.top,
+          }));
 
-        if (visible) {
-          setActiveId(visible.target.id);
-        }
+        if (!visibleHeadings.length) return;
+
+        // viewport top 기준으로 가장 가까운 heading 선택
+        visibleHeadings.sort((a, b) => a.top - b.top);
+
+        setActiveId(visibleHeadings[0].id);
       },
       {
-        rootMargin: "-80px 0px -60% 0px",
-        threshold: [0.1, 0.5, 1],
+        rootMargin: "-80px 0px -70% 0px",
+        threshold: 0,
       },
     );
 
